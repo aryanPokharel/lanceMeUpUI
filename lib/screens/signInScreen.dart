@@ -16,7 +16,7 @@ class _SignInScreenState extends State<SignInScreen> {
   // login function
 
   void login() {
-    Navigator.pushNamed(context, '/carouselPage');
+    Navigator.pushNamed(context, '/mails');
   }
 
   @override
