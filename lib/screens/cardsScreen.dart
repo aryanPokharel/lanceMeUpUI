@@ -11,159 +11,95 @@ class _CardScreenState extends State<CardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.red,
-        elevation: 0,
-        title: Row(
-          children: [
-            Image.asset(
-              'your_logo.png',
-              height: 30,
-            ),
-            const SizedBox(width: 8),
-            const Text(
-              'Lancemeup',
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-            const SizedBox(width: 8),
-            const Icon(
-              Icons.arrow_drop_down,
-              color: Colors.black,
-            ),
-            const Spacer(),
-            IconButton(
-              icon: const Icon(
-                Icons.search,
-                color: Colors.black,
-              ),
-              onPressed: () {},
-            ),
-          ],
-        ),
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(40),
+      appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(100.0),
           child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
+            child: Column(
               children: [
-                Expanded(
-                  child: InkWell(
-                    onTap: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                AppBar(
+                  backgroundColor: Colors.white,
+                  foregroundColor: Colors.black,
+                  elevation: 0,
+                  automaticallyImplyLeading: false,
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: const [
                           Icon(
-                            Icons.shopping_bag,
-                            color: _currentIndex == 0
-                                ? Colors.green
-                                : Colors.black,
+                            Icons.home,
+                            color: Colors.red,
                           ),
-                          const SizedBox(height: 2),
                           Text(
-                            'Project Tools',
-                            style: TextStyle(
-                              color: _currentIndex == 0
-                                  ? Colors.green
-                                  : Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            "LanceMeUp",
                           ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Icon(Icons.arrow_drop_down)
                         ],
                       ),
-                    ),
+                      const Icon(Icons.search)
+                    ],
                   ),
                 ),
-                Expanded(
-                  child: InkWell(
-                    onTap: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Stack(
-                            children: [
-                              Icon(
-                                Icons.message,
-                                color: _currentIndex == 1
-                                    ? Colors.green
-                                    : Colors.black,
-                              ),
-                              Positioned(
-                                right: 0,
-                                child: Container(
-                                  padding: const EdgeInsets.all(2),
-                                  decoration: BoxDecoration(
-                                    color: Colors.red,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: const Text(
-                                    '3',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      TextButton.icon(
+                        onPressed: () {
+                          // Handle button press
+                        },
+                        icon: const Icon(Icons.file_copy),
+                        label: const Text('Project Tools'),
+                        style: TextButton.styleFrom(
+                          primary: Colors.green,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
                           ),
-                          const SizedBox(height: 2),
-                          Text(
-                            'Chat',
-                            style: TextStyle(
-                              color: _currentIndex == 1
-                                  ? Colors.green
-                                  : Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: InkWell(
-                    onTap: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.folder,
-                            color: _currentIndex == 2
-                                ? Colors.green
-                                : Colors.black,
+                      TextButton.icon(
+                        onPressed: () {},
+                        icon: const Icon(Icons.cloud),
+                        label: const Text('Chat'),
+                        style: TextButton.styleFrom(
+                          primary: Colors.green,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
                           ),
-                          const SizedBox(height: 2),
-                          Text(
-                            'Drive',
-                            style: TextStyle(
-                              color: _currentIndex == 2
-                                  ? Colors.green
-                                  : Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
+                      TextButton.icon(
+                        onPressed: () {},
+                        icon: const Icon(Icons.drive_file_move),
+                        label: const Text('Drive'),
+                        style: TextButton.styleFrom(
+                          primary: Colors.green,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                      ),
+                      TextButton.icon(
+                        onPressed: () {},
+                        icon: const Icon(Icons.lock_clock),
+                        label: const Text('Track'),
+                        style: TextButton.styleFrom(
+                          primary: Colors.green,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
+                )
               ],
             ),
-          ),
-        ),
-      ),
+          )),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
@@ -283,7 +219,10 @@ class _CardScreenState extends State<CardScreen> {
             children: [
               Row(
                 children: [
-                  Icon(icon),
+                  Icon(
+                    icon,
+                    color: Colors.green,
+                  ),
                   const SizedBox(width: 8),
                   Text(title),
                   const SizedBox(width: 8),
@@ -298,6 +237,7 @@ class _CardScreenState extends State<CardScreen> {
           ),
           const SizedBox(height: 16),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(subtitle1),
               Text(subtitle2),
@@ -308,7 +248,7 @@ class _CardScreenState extends State<CardScreen> {
           Stack(
             children: [
               LinearProgressIndicator(
-                value: 1,
+                value: .4,
                 backgroundColor: Colors.grey[300],
                 color: Colors.green,
               ),
@@ -324,7 +264,7 @@ class _CardScreenState extends State<CardScreen> {
                   const Text(
                     '40%',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.green,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -334,19 +274,13 @@ class _CardScreenState extends State<CardScreen> {
           ),
           const SizedBox(height: 8),
           Row(
-            children: [
-              Text('${(0.4 * 100).toInt()}%'),
-              const Spacer(),
-              Row(
-                children: List.generate(
-                  peopleCount,
-                  (index) => CircleAvatar(
-                    backgroundColor: Colors.grey[300],
-                    child: const Icon(Icons.person),
-                  ),
-                ),
+            children: List.generate(
+              peopleCount,
+              (index) => CircleAvatar(
+                backgroundColor: Colors.grey[300],
+                child: const Icon(Icons.person),
               ),
-            ],
+            ),
           ),
         ],
       ),
