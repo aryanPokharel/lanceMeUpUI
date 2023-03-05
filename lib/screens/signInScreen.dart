@@ -16,7 +16,7 @@ class _SignInScreenState extends State<SignInScreen> {
   // login function
 
   void login() {
-    Navigator.pushNamed(context, '/mails');
+    Navigator.pushNamed(context, '/home');
   }
 
   @override

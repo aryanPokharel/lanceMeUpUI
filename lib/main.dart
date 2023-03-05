@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lancemeup/screens/cardsScreen.dart';
 import 'package:lancemeup/screens/carouselScreen.dart';
+import 'package:lancemeup/screens/homeScreen.dart';
 import 'package:lancemeup/screens/landingScreen.dart';
 import 'package:lancemeup/screens/signInScreen.dart';
 import 'package:lancemeup/screens/splashScreen.dart';
@@ -15,6 +16,7 @@ void main() {
         '/landing': (context) => const LandingScreen(),
         '/signIn': (context) => const SignInScreen(),
         '/mails': (context) => CardScreen(),
+        '/home': (context) => const MyHomePage(),
         '/carouselPage': (context) => const MyCarousel(
               items: [
                 {

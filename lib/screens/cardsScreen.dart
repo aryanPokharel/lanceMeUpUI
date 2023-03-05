@@ -6,7 +6,7 @@ class CardScreen extends StatefulWidget {
 }
 
 class _CardScreenState extends State<CardScreen> {
-  int _currentIndex = 0;
+  final int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -100,60 +100,6 @@ class _CardScreenState extends State<CardScreen> {
               ],
             ),
           )),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        selectedItemColor: Colors.green,
-        unselectedItemColor: Colors.black,
-        items: [
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Stack(
-              children: [
-                const Icon(Icons.email),
-                Positioned(
-                  right: 0,
-                  child: Container(
-                    padding: const EdgeInsets.all(2),
-                    decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Text(
-                      '3',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            label: 'Email',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'Notification',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -184,6 +130,12 @@ class _CardScreenState extends State<CardScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildIcons({required String imageUrl}) {
+    return CircleAvatar(
+      backgroundImage: NetworkImage(imageUrl),
     );
   }
 
@@ -276,10 +228,15 @@ class _CardScreenState extends State<CardScreen> {
           Row(
             children: List.generate(
               peopleCount,
-              (index) => CircleAvatar(
-                backgroundColor: Colors.grey[300],
-                child: const Icon(Icons.person),
-              ),
+              (index) => (index == 1)
+                  ? _buildIcons(imageUrl: 'https://picsum.photos/200/300')
+                  : ((index == 2)
+                      ? _buildIcons(imageUrl: 'https://picsum.photos/200/400')
+                      : ((index == 4)
+                          ? _buildIcons(
+                              imageUrl: 'https://picsum.photos/400/500')
+                          : _buildIcons(
+                              imageUrl: 'https://picsum.photos/400/400'))),
             ),
           ),
         ],
